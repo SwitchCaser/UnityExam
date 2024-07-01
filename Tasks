@@ -1,0 +1,17 @@
+//
+// 4.	 Создайте	скрипт,	который	реализует	появление	префаба	в  случайном месте сцены. Радиус появления 20 юнитов.
+//
+public GameObject cubePrefab;
+
+void Update()
+{
+  if (Input.GetKeyDown(KeyCode.Space))
+  {
+    Vector3 spawnPosition = new Vector3(Random.Range(Random.Range(-10, 11), Random.Range(-10, 11), Random.Range(-10, 11));
+    Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
+  }
+}
+
+//
+// 5.	 Создайте скрипт, который реализует удаление объекта на сцене по нажатию на него левой клавиши мыши.
+//
