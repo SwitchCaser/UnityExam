@@ -1,17 +1,43 @@
 //
 // 4.	 Создайте	скрипт,	который	реализует	появление	префаба	в  случайном месте сцены. Радиус появления 20 юнитов.
-//
-public GameObject cubePrefab;
+// Скрипт вешается на пустой объект, в prefab добавляется префаб
+public GameObject prefab;
 
 void Update()
 {
   if (Input.GetKeyDown(KeyCode.Space))
   {
     Vector3 spawnPosition = new Vector3(Random.Range(Random.Range(-10, 11), Random.Range(-10, 11), Random.Range(-10, 11));
-    Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
+    Instantiate(prefab, spawnPosition, Quaternion.identity);
   }
 }
 
 //
 // 5.	 Создайте скрипт, который реализует удаление объекта на сцене по нажатию на него левой клавиши мыши.
+// Скрипт вешается на объект
+private void OnMouseDown()
+{
+  Destroy(GameObject);
+}
+
 //
+// 6.	Создайте скрипт, который реализует перемещение объекта по 2- ум осям со скоростью 5.
+//
+private float speed = 5f;
+
+void Update()
+{
+  transform.position += new Vector3(speed, 0, speed) * Time.deltaTime;
+}
+
+//
+// 7.	Создайте скрипт, который реализует уменьшение размера объекта до 0%. При достижении 0% объект нужно удалить.
+//
+void Update()
+{
+  transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
+  if (transform.localScale <= Vector3(0f, 0f, 0f))
+  {
+    Destroy(GameObject);
+  }
+}
