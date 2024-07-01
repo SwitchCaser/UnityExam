@@ -61,8 +61,13 @@ void Update()
 //
 // 10.	Реализуйте передвижение объекта через компонент Rigidbody
 //
-public RigidBody rb;
-private Vector3 direction = new Vector3(5, 0, 5);
+public Rigidbody rb;
+private Vector3 direction = new Vector3(5, 5, 5);
+
+void Start()
+{
+  transform.position = new Vector3(0, 0, 0);
+}
 void Update()
 {
   rb.AddForce(direction);
@@ -98,3 +103,168 @@ void Update()
   Vector3 newPosition = new Vector3(target.position.x, target.position.y + 10f, target.position - 10f);
   transfrom.position = Vector3.Slerp(transform.position, newPosition, followSpeed * time);
 }
+
+//
+// 12.	Реализуйте	с	помощью	скрипта	перемещение	камеры	по  определенной траектории
+//
+private float x = 0f;
+
+void Update()
+{
+  transofrm.position += new Vector3(x, x * x, 0);
+  x += 0.1f;
+}
+
+//
+// 13.	Реализуйте скрипт для прыжка объекта по нажатию клавиши
+//
+public RigidBody rb;
+
+void Update()
+{
+  Input.GetKeyDown(KeyCode.Space)
+  {
+    rb.velocity = new Vector3(rb.velocity.x, 5f, rb.velocity.z);
+  }
+}
+
+//
+// 14.	Напишите скрипт по переключению между слоями
+//
+void Update()
+{
+  if (Input.GetKeyDown(KeyCode.Space))
+  {
+    gameObject.layer = 2; // любой номер слоя
+  }
+}
+
+//
+// 15.	Реализуйте скрипт для ускоренного бега и приседания, если над FPS объект - не выходить из состояния приседания
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// 16.	Напишите скрипт генерации префабов на сцене
+//
+public gameObject prefab;
+private float xPosition = 0f;
+private float zPosition = 0f;
+
+void Update()
+{
+    Vector3 spawnPosition = new Vector3(xPosition, 0, zPosition);
+    Instantiate(prefab, spawnPosition, Quaternion.identity);
+    xPosition += 1f;
+    zPosition += 2f;
+}
+
+//
+// 17.	Напишите скрипт дающий скорость передвижения объекту
+//
+public float speed = 5f;
+
+void Update()
+{
+  transform.position += new Vector3(speed, speed * 0.5, speed) * Time.deltaTime;
+}
+
+//
+// 18.	Напишите скрипт дающий очки жизни объекту
+//
+private float health = 100f;
+
+voidUpdate()
+{
+  if (Input.GetKeyDown(KeyCode.H))
+  {
+    health -= 20f;
+  }
+
+  if (health <= 0)
+  {
+    Destroy(gameObject);
+  }
+}
+
+//
+// 19.	Динамическое изменение параметров объекта. Создайте объект с
+// изменяемыми параметрами (например, скорость, размер, цвет), а после реализуйте скрипт, который динамически
+// изменяет эти параметры в зависимости от действий игрока или состояния игры.
+//
+void Update()
+{
+  if (Input.GetKeyDown(KeyCode.R))
+  {
+    gameObject.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+  }
+  if (Input.GetKeyDown(KeyCode.G))
+  {
+    gameObject.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+  }
+  if (Input.GetKeyDown(KeyCode.B))
+  {
+    gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 255);
+  }
+  if (Input.GetKeyDown(KeyCode.Space))
+  {
+    gameObject.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
+  }
+  if (Input.GetKeyDown(KeyCode.LeftShift))
+  {
+    gameObject.transform.localScale -= new Vector3(1.5f, 1.5f, 1.5f);
+  }
+}
+
+//
+// 
+// 
